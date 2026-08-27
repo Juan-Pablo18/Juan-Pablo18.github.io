@@ -1,73 +1,218 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TaskFlow — Gerenciador de Tarefas</title>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/dark-mode.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pauta — Organize a empresa, os estudos e o dia a dia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <header class="cabecalho">
-    <div class="cabecalho-conteudo">
-      <h1>TaskFlow</h1>
-      <p>Organize suas tarefas do dia a dia.</p>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">Pauta <span>AGENDA &amp; CHECKLIST</span></div>
+    <div class="nav-links">
+      <a href="#recursos">Recursos</a>
+      <a href="#publico">Para quem</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#depoimentos">Depoimentos</a>
     </div>
-    <button id="btn-dark-mode" class="btn-icone" aria-label="Alternar modo escuro" title="Alternar modo escuro">🌙</button>
-  </header>
+    <div class="nav-cta">
+      <a href="#experimentar" class="btn btn-ghost btn-sm">Entrar</a>
+      <a href="#cta" class="btn btn-primary btn-sm">Começar agora</a>
+    </div>
+  </nav>
+</header>
 
-  <main class="conteudo">
-
-    <form id="form-tarefa" class="formulario">
-      <input
-        type="text"
-        id="input-tarefa"
-        placeholder="Digite uma nova tarefa"
-        maxlength="80"
-        autocomplete="off"
-      >
-      <select id="select-prioridade" aria-label="Prioridade da tarefa">
-        <option value="baixa">Baixa</option>
-        <option value="media" selected>Média</option>
-        <option value="alta">Alta</option>
-      </select>
-      <button type="submit">Adicionar</button>
-    </form>
-
-    <section class="estatisticas" id="estatisticas">
-      <span id="stat-total">0 tarefas</span>
-      <span id="stat-concluidas">0 concluídas</span>
-    </section>
-
-    <section class="filtros">
-      <input type="search" id="input-busca" placeholder="Buscar tarefa...">
-      <div class="filtros-botoes">
-        <button class="filtro-btn ativo" data-filtro="todas">Todas</button>
-        <button class="filtro-btn" data-filtro="pendentes">Pendentes</button>
-        <button class="filtro-btn" data-filtro="concluidas">Concluídas</button>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Organização diária, sem ruído</span>
+      <h1>Cada tarefa,<br>no seu <em>devido lugar.</em></h1>
+      <p class="lead">Pauta é a agenda para quem organiza muita coisa ao mesmo tempo — a diretoria, os estudos, o dia a dia de casa. Um checklist refinado, direto ao ponto, sem poluição visual.</p>
+      <div class="hero-cta">
+        <a href="#cta" class="btn btn-primary">Experimentar grátis</a>
+        <a href="#como-funciona" class="btn btn-ghost">Ver como funciona</a>
       </div>
-      <button id="btn-excluir-todas" class="btn-perigo">Excluir todas</button>
-    </section>
+      <div class="hero-proof">
+        <div><b>3</b>contextos em um só lugar</div>
+        <div><b>0</b>distrações na tela</div>
+        <div><b>1</b>toque para anotar</div>
+      </div>
+    </div>
 
-    <ul id="lista-tarefas" class="lista-tarefas"></ul>
+    <div class="ledger" id="ledger">
+      <div class="ledger-tabs" id="ledgerTabs"></div>
+      <div class="ledger-head">
+        <h3 id="ledgerTitle">Empresa</h3>
+        <span class="ledger-count" id="ledgerCount">0 de 0 concluídas</span>
+      </div>
+      <div class="ledger-list" id="ledgerList"></div>
+      <div class="ledger-add">
+        <input type="text" id="ledgerInput" placeholder="Nova anotação para hoje…" maxlength="60">
+        <button class="add-btn" id="ledgerAdd" aria-label="Adicionar tarefa" title="Adicionar tarefa">+</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-  </main>
+<section class="audience" id="publico">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Para quem</span>
+      <h2>Feita para quem organiza mais do que uma agenda.</h2>
+      <p>Empresas, salas de aula e a rotina de casa pedem listas diferentes — Pauta se adapta a cada uma, mantendo o mesmo padrão simples de usar.</p>
+    </div>
+    <div class="aud-grid">
+      <div class="aud-card">
+        <span class="eyebrow">Empresa</span>
+        <h3>Para quem lidera</h3>
+        <p>Pautas de reunião, decisões pendentes e prioridades da semana, organizadas por urgência.</p>
+        <ul>
+          <li>Aprovar orçamento do 3º trimestre</li>
+          <li>Revisar proposta com o time comercial</li>
+          <li>Alinhar pauta da reunião de diretoria</li>
+        </ul>
+      </div>
+      <div class="aud-card">
+        <span class="eyebrow">Academia</span>
+        <h3>Para quem estuda</h3>
+        <p>Entregas, leituras e prazos de pesquisa acompanhados sem planilhas complicadas.</p>
+        <ul>
+          <li>Entregar capítulo 2 da dissertação</li>
+          <li>Ler artigo indicado pelo orientador</li>
+          <li>Revisar slides da apresentação</li>
+        </ul>
+      </div>
+      <div class="aud-card">
+        <span class="eyebrow">Dia a dia</span>
+        <h3>Para a vida pessoal</h3>
+        <p>Compromissos, compras e pequenas tarefas que também merecem um lugar certo.</p>
+        <ul>
+          <li>Marcar consulta médica</li>
+          <li>Pagar contas do mês</li>
+          <li>Planejar o fim de semana</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <footer class="rodape">
-    <p>TaskFlow — projeto desenvolvido em equipe.</p>
-  </footer>
+<section id="recursos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Recursos</span>
+      <h2>Tudo o que uma lista precisa. Nada do que ela não precisa.</h2>
+      <p>Cada recurso existe para reduzir cliques e manter a cabeça livre — não para empilhar funções que ninguém usa.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <span class="feat-num">ANOTAR</span>
+        <h3>Adicione em segundos</h3>
+        <p>Digite e toque em "+". A tarefa entra na lista sem formulários nem etapas extras.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-num">CONCLUIR</span>
+        <h3>Marque como feito</h3>
+        <p>Um toque risca o item e atualiza a contagem — visual e imediato.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-num">PRIORIZAR</span>
+        <h3>Baixa, média e alta</h3>
+        <p>Dê peso às tarefas que realmente decidem o seu dia, sem depender de cores soltas.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-num">FILTRAR</span>
+        <h3>Todas, pendentes, concluídas</h3>
+        <p>Veja só o que interessa em cada momento, sem rolar a lista inteira.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-num">ALTERNAR</span>
+        <h3>Modo claro e escuro</h3>
+        <p>A mesma clareza de dia ou à noite, respeitando os olhos e o ambiente.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-num">SEPARAR</span>
+        <h3>Contextos independentes</h3>
+        <p>Empresa, estudos e vida pessoal ficam em pautas distintas, sem se misturar.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- A ordem de carregamento importa: cada módulo depende do anterior -->
-  <script src="js/storage.js"></script>
-  <script src="js/state.js"></script>
-  <script src="js/taskItem.js"></script>
-  <script src="js/render.js"></script>
-  <script src="js/stats.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/form.js"></script>
-  <script src="js/main.js"></script>
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Três passos. Só isso.</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-dot">01</div>
+        <h3>Anote</h3>
+        <p>Escreva a tarefa e toque no botão "+". Não há cadastro nem configuração antes disso.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-dot">02</div>
+        <h3>Organize</h3>
+        <p>Defina prioridade e escolha o contexto — empresa, academia ou pessoal.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-dot">03</div>
+        <h3>Conclua</h3>
+        <p>Marque como feito e acompanhe quanto já foi resolvido no dia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testi" id="depoimentos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Depoimentos</span>
+      <h2>Quem organiza muita coisa, confia em pouca coisa.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="quote">"Parei de misturar pauta de diretoria com lembrete de casa. Agora cada coisa tem seu espaço."</p>
+        <div class="testi-who"><b>Diretora de operações</b>Empresa de logística</div>
+      </div>
+      <div class="testi-card">
+        <p class="quote">"Uso para acompanhar as entregas da dissertação. É a única lista que eu realmente termino de olhar."</p>
+        <div class="testi-who"><b>Mestranda</b>Pós-graduação em Economia</div>
+      </div>
+      <div class="testi-card">
+        <p class="quote">"Simples o suficiente para o dia a dia de casa, e organizada o bastante para o trabalho."</p>
+        <div class="testi-who"><b>Autônoma</b>Gestão de projetos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <div class="wrap">
+    <span class="eyebrow">Comece hoje</span>
+    <h2>Sua próxima tarefa está a um toque de distância.</h2>
+    <p>Sem cartão de crédito. Sem curva de aprendizado. Só uma pauta bem organizada.</p>
+    <form class="cta-form" onsubmit="return false;">
+      <input type="email" placeholder="seu@email.com" aria-label="Seu e-mail">
+      <button class="btn btn-primary" type="submit">Criar minha pauta</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">Pauta</div>
+    <div>© 2026 Pauta. Organização para empresas, estudos e vida pessoal.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
 
 </body>
 </html>
