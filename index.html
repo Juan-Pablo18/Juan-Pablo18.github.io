@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow — Gerenciador de Tarefas</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <div class="cabecalho-conteudo">
+      <h1>TaskFlow</h1>
+      <p>Organize suas tarefas do dia a dia.</p>
+    </div>
+    <button id="btn-dark-mode" class="btn-icone" aria-label="Alternar modo escuro" title="Alternar modo escuro">🌙</button>
+  </header>
+
+  <main class="conteudo">
+
+    <form id="form-tarefa" class="formulario">
+      <input
+        type="text"
+        id="input-tarefa"
+        placeholder="Digite uma nova tarefa"
+        maxlength="80"
+        autocomplete="off"
+      >
+      <select id="select-prioridade" aria-label="Prioridade da tarefa">
+        <option value="baixa">Baixa</option>
+        <option value="media" selected>Média</option>
+        <option value="alta">Alta</option>
+      </select>
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <section class="estatisticas" id="estatisticas">
+      <span id="stat-total">0 tarefas</span>
+      <span id="stat-concluidas">0 concluídas</span>
+    </section>
+
+    <section class="filtros">
+      <input type="search" id="input-busca" placeholder="Buscar tarefa...">
+      <div class="filtros-botoes">
+        <button class="filtro-btn ativo" data-filtro="todas">Todas</button>
+        <button class="filtro-btn" data-filtro="pendentes">Pendentes</button>
+        <button class="filtro-btn" data-filtro="concluidas">Concluídas</button>
+      </div>
+      <button id="btn-excluir-todas" class="btn-perigo">Excluir todas</button>
+    </section>
+
+    <ul id="lista-tarefas" class="lista-tarefas"></ul>
+
+  </main>
+
+  <footer class="rodape">
+    <p>TaskFlow — projeto desenvolvido em equipe.</p>
+  </footer>
+
+  <!-- A ordem de carregamento importa: cada módulo depende do anterior -->
+  <script src="js/storage.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/taskItem.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/stats.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+/* ==================================================
+   DARK MODE
+   Responsável: Erik Jadson
+   Ativado via classe "modo-escuro" no <body> (ver js/main.js)
+================================================== */
+
+body.modo-escuro {
+  --cor-fundo: #111827;
+  --cor-card: #1f2937;
+  --cor-texto: #f3f4f6;
+  --cor-texto-suave: #9ca3af;
+  --cor-borda: #374151;
+}
+
+body.modo-escuro .cabecalho {
+  background: #1d4ed8;
+}
+
+body.modo-escuro .formulario input[type="text"],
+body.modo-escuro .formulario select,
+body.modo-escuro .filtros input[type="search"] {
+  background: var(--cor-card);
+  color: var(--cor-texto);
+  border-color: var(--cor-borda);
+}
+
+body.modo-escuro .filtro-btn {
+  background: var(--cor-card);
+  color: var(--cor-texto);
+}
+
+body.modo-escuro .filtro-btn.ativo {
+  background: var(--cor-primaria);
+  color: #fff;
+}

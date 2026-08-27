@@ -1,0 +1,292 @@
+/* ==================================================
+   ESTILO GERAL E RESPONSIVIDADE
+   Responsável: Erik Jadson
+================================================== */
+
+:root {
+  --cor-primaria: #2563eb;
+  --cor-primaria-escura: #1d4ed8;
+  --cor-perigo: #dc2626;
+  --cor-perigo-escura: #b91c1c;
+  --cor-fundo: #f4f4f4;
+  --cor-card: #ffffff;
+  --cor-texto: #1f2937;
+  --cor-texto-suave: #6b7280;
+  --cor-borda: #e5e7eb;
+  --raio: 8px;
+}
+
+body {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: "Segoe UI", Arial, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ---------- CABEÇALHO ---------- */
+.cabecalho {
+  background: var(--cor-primaria);
+  color: #fff;
+  padding: 26px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cabecalho-conteudo h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.cabecalho-conteudo p {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+.btn-icone {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 16px;
+  transition: background 0.2s ease;
+}
+
+.btn-icone:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* ---------- CONTEÚDO ---------- */
+.conteudo {
+  max-width: 720px;
+  margin: 30px auto;
+  padding: 0 20px 60px;
+}
+
+/* ---------- FORMULÁRIO ---------- */
+.formulario {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.formulario input[type="text"] {
+  flex: 1;
+  padding: 11px 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-card);
+}
+
+.formulario select {
+  padding: 11px 10px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-card);
+}
+
+.formulario button {
+  padding: 11px 20px;
+  background: var(--cor-primaria);
+  color: #fff;
+  border-radius: var(--raio);
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.formulario button:hover {
+  background: var(--cor-primaria-escura);
+}
+
+/* ---------- ESTATÍSTICAS ---------- */
+.estatisticas {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+  margin-bottom: 16px;
+}
+
+/* ---------- FILTROS ---------- */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.filtros input[type="search"] {
+  flex: 1;
+  min-width: 160px;
+  padding: 9px 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-card);
+}
+
+.filtros-botoes {
+  display: flex;
+  gap: 6px;
+}
+
+.filtro-btn {
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--cor-borda);
+  background: var(--cor-card);
+  font-size: 13px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.filtro-btn.ativo {
+  background: var(--cor-primaria);
+  color: #fff;
+  border-color: var(--cor-primaria);
+}
+
+.btn-perigo {
+  padding: 9px 16px;
+  background: var(--cor-perigo);
+  color: #fff;
+  border-radius: var(--raio);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.btn-perigo:hover {
+  background: var(--cor-perigo-escura);
+}
+
+/* ---------- LISTA DE TAREFAS ---------- */
+.lista-tarefas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tarefa {
+  background: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tarefa-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--cor-primaria);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.tarefa-texto {
+  flex: 1;
+  cursor: text;
+  word-break: break-word;
+}
+
+.tarefa-texto-input {
+  flex: 1;
+  padding: 4px 6px;
+  border: 1px solid var(--cor-primaria);
+  border-radius: 4px;
+  background: var(--cor-card);
+  color: var(--cor-texto);
+}
+
+.tarefa.concluida .tarefa-texto {
+  text-decoration: line-through;
+  color: var(--cor-texto-suave);
+}
+
+.tarefa-prioridade {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  color: #fff;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.prioridade-baixa { background: #16a34a; }
+.prioridade-media { background: #d97706; }
+.prioridade-alta  { background: #dc2626; }
+
+.tarefa-data {
+  font-size: 11px;
+  color: var(--cor-texto-suave);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tarefa-acoes {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.tarefa-acoes button {
+  font-size: 14px;
+  color: var(--cor-texto-suave);
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.tarefa-acoes button:hover {
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+}
+
+.mensagem-vazia {
+  text-align: center;
+  color: var(--cor-texto-suave);
+  padding: 50px 0;
+  font-size: 14px;
+}
+
+/* ---------- RODAPÉ ---------- */
+.rodape {
+  text-align: center;
+  padding: 24px;
+  font-size: 12px;
+  color: var(--cor-texto-suave);
+}
+
+/* ---------- RESPONSIVIDADE ---------- */
+@media (max-width: 600px) {
+  .formulario {
+    flex-direction: column;
+  }
+
+  .estatisticas {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .filtros {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filtros-botoes {
+    justify-content: space-between;
+  }
+
+  .tarefa {
+    flex-wrap: wrap;
+  }
+
+  .tarefa-data {
+    order: 5;
+    width: 100%;
+    margin-left: 30px;
+  }
+}
