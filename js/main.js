@@ -36,12 +36,15 @@
   let current = "empresa";
 
   const tagLabel = { alta: "Alta", media: "Média", baixa: "Baixa" };
+  // Ordem de ciclo ao clicar na etiqueta: Baixa -> Média -> Alta -> Baixa
+  const nextPriority = { baixa: "media", media: "alta", alta: "baixa" };
 
   const tabsEl = document.getElementById("ledgerTabs");
   const titleEl = document.getElementById("ledgerTitle");
   const countEl = document.getElementById("ledgerCount");
   const listEl = document.getElementById("ledgerList");
   const inputEl = document.getElementById("ledgerInput");
+  const priorityEl = document.getElementById("ledgerPriority");
   const addBtn = document.getElementById("ledgerAdd");
 
   function renderTabs(){
@@ -89,9 +92,13 @@
       span.className = "txt";
       span.textContent = item.txt;
 
-      const tag = document.createElement("span");
+      const tag = document.createElement("button");
+      tag.type = "button";
       tag.className = "tag " + item.tag;
       tag.textContent = tagLabel[item.tag];
+      tag.title = "Toque para alterar a prioridade";
+      tag.setAttribute("aria-label", "Prioridade: " + tagLabel[item.tag] + ". Toque para alterar.");
+      tag.addEventListener("click", () => { item.tag = nextPriority[item.tag]; render(); });
 
       const rm = document.createElement("button");
       rm.className = "rm";
@@ -110,8 +117,10 @@
   function addItem(){
     const val = inputEl.value.trim();
     if (!val) return;
-    contexts[current].items.push({ txt: val, tag: "media", done: false });
+    const prioridade = priorityEl.value || "media";
+    contexts[current].items.push({ txt: val, tag: prioridade, done: false });
     inputEl.value = "";
+    priorityEl.value = "media";
     render();
   }
 

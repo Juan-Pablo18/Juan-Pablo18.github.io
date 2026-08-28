@@ -54,8 +54,14 @@
       <div class="ledger-list" id="ledgerList"></div>
       <div class="ledger-add">
         <input type="text" id="ledgerInput" placeholder="Nova anotação para hoje…" maxlength="60">
+        <select id="ledgerPriority" aria-label="Prioridade da tarefa">
+          <option value="baixa">Baixa</option>
+          <option value="media" selected>Média</option>
+          <option value="alta">Alta</option>
+        </select>
         <button class="add-btn" id="ledgerAdd" aria-label="Adicionar tarefa" title="Adicionar tarefa">+</button>
       </div>
+      <p class="ledger-hint">Toque na etiqueta de prioridade de uma tarefa para alterá-la.</p>
     </div>
   </div>
 </section>
